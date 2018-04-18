@@ -21,7 +21,7 @@ public class WebAspect {
     @Before("webLog()")
     public void deBefore(JoinPoint joinPoint) throws Throwable {
         System.out.println("**************服 务 器 处 理 请 求**************");
-        System.out.println("作者 : 黄大胖子             Github : GarfieldHuang");
+        System.out.println("作者 : 黄大胖子             GitHub : GarfieldHuang");
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -45,6 +45,8 @@ public class WebAspect {
     //后置异常通知
     @AfterThrowing("webLog()")
     public void throwss(JoinPoint jp) {
+        System.out.println();
+        System.out.println();
         System.out.println("******************异常*******************");
         System.out.println();
         System.out.println();

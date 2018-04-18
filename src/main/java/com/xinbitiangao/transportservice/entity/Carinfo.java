@@ -9,7 +9,7 @@ public class Carinfo {
     private String carnumber;
     private long number;
     private String pcardid;
-    private java.sql.Date buydate;
+    private String buydate;
     private String carbrand;
     private String cardbrand;
 
@@ -40,15 +40,13 @@ public class Carinfo {
         this.pcardid = pcardid;
     }
 
-
-    public java.sql.Date getBuydate() {
+    public String getBuydate() {
         return buydate;
     }
 
-    public void setBuydate(java.sql.Date buydate) {
+    public void setBuydate(String buydate) {
         this.buydate = buydate;
     }
-
 
     public String getCarbrand() {
         return carbrand;
