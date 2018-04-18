@@ -4,13 +4,6 @@
     <list default="true" id="9b4b0e06-fa2b-4434-8233-964e2313422c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/aop/WebAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/aop/WebAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/controller/SenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/controller/SenseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/entity/Carinfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/entity/Carinfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/entity/Setctralog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/entity/Setctralog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/service/impl/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/service/impl/BaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/apiPDF/中慧智能交通管理系统OpenAPIV1.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database/itmsdb.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xinbitiangao/transportservice/TransportserviceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xinbitiangao/transportservice/TransportserviceApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xinbitiangao/transportservice/aop/WebAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xinbitiangao/transportservice/aop/WebAspect.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xinbitiangao/transportservice/controller/CarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xinbitiangao/transportservice/controller/CarController.class" afterDir="false" />
@@ -70,7 +63,17 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -131,12 +134,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/service/impl/EtcServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/service/impl/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/aop/WebAspect.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/controller/CarController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/service/impl/CarServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/entity/Carinfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/entity/Setctralog.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/controller/SenseController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -354,7 +357,7 @@
       <workItem from="1523930695330" duration="34033000" />
       <workItem from="1523970012364" duration="153000" />
       <workItem from="1523970238416" duration="94000" />
-      <workItem from="1524021153026" duration="15471000" />
+      <workItem from="1524021153026" duration="15505000" />
     </task>
     <task id="LOCAL-00001" summary="提交提交">
       <created>1523970033275</created>
@@ -377,11 +380,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524021425559</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="最终定格">
+      <created>1524057699553</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1524057699553</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50383000" />
+    <option name="totallyTimeSpent" value="50417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -394,6 +404,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="687" y="0" width="1240" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5016949" side_tool="true" weight="0.32819384" />
@@ -474,7 +485,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="提交提交" />
     <MESSAGE value="修改aop切入包" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改aop切入包" />
+    <MESSAGE value="最终定格" />
+    <option name="LAST_COMMIT_MESSAGE" value="最终定格" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -702,13 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="67" column="7" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xinbitiangao/transportservice/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -826,6 +831,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="104" column="9" lean-forward="true" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
         </state>
       </provider>
     </entry>
