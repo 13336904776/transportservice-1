@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @Aspect
 @Component
 public class WebAspect {
-    @Pointcut("execution(public * com.example.transportservice.controller.*.*(..))")
+    @Pointcut("execution(public * com.xinbitiangao.transportservice.controller.*.*(..))")
     public void webLog() {}
 
     @Before("webLog()")
