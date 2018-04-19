@@ -1,6 +1,5 @@
 package com.xinbitiangao.transportservice.controller;
 
-import com.xinbitiangao.transportservice.entity.Sbusinfo;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,11 +54,14 @@ public class RandomController {
     @RequestMapping("/get_bus_station_info")
     public Map getBusStationInfo(@RequestBody HashMap<String, Object> map) {
         fanhui = getWinMap();
-        ArrayList<Sbusinfo> ROWS_DETAIL = new ArrayList();
+        ArrayList ROWS_DETAIL = new ArrayList();
         for (int i = 0; i < 12; i++) {
-           ROWS_DETAIL.add(new Sbusinfo(i+1,random.nextInt(20000))) ;
+            HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+            objectObjectHashMap.put("BusId", i + 1);
+            objectObjectHashMap.put("Distance", random.nextInt(20000));
+            ROWS_DETAIL.add(objectObjectHashMap);
         }
-        fanhui.put("ROWS_DETAIL",ROWS_DETAIL);
+        fanhui.put("ROWS_DETAIL", ROWS_DETAIL);
         return fanhui;
     }
 

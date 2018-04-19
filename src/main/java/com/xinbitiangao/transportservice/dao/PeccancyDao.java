@@ -1,15 +1,18 @@
 package com.xinbitiangao.transportservice.dao;
 
-import com.xinbitiangao.transportservice.entity.Peccancy;
+import com.xinbitiangao.transportservice.entity.PeccancyEntity;
+import com.xinbitiangao.transportservice.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.swing.*;
 import java.util.List;
 
-public interface PeccancyDao extends JpaRepository<Peccancy,Long> {
+public interface PeccancyDao extends JpaRepository<PeccancyEntity,Spring> {
+
     /**
-     * 按照车牌获取车辆违章信息
+     * 按车牌查违章
      * @param carnumber
      * @return
      */
-    public List<Peccancy> findByCarnumberEquals(String carnumber);
+    List<PeccancyEntity> findByCarnumberEquals(String carnumber);
 }

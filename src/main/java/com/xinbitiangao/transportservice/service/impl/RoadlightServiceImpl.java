@@ -1,10 +1,10 @@
 package com.xinbitiangao.transportservice.service.impl;
 
 
+import com.xinbitiangao.transportservice.dao.OthersingleDao;
 import com.xinbitiangao.transportservice.dao.RoadlightDao;
-import com.xinbitiangao.transportservice.dao.SothersingleDao;
-import com.xinbitiangao.transportservice.entity.Sothersingle;
-import com.xinbitiangao.transportservice.entity.Sroadlight;
+import com.xinbitiangao.transportservice.entity.OthersingleEntity;
+import com.xinbitiangao.transportservice.entity.RoadlightEntity;
 import com.xinbitiangao.transportservice.service.RoadlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +19,18 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     @Autowired
     private RoadlightDao roadlightDao;
     @Autowired
-    private SothersingleDao sothersingleDao;
+    private OthersingleDao othersingleDao;
 
-
+    /**
+     * 设置自动手动控制模式
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map setRoadlightControlMode(HashMap<String, Object> map) {
         try {
-            Sroadlight one = roadlightDao.getOne(1L);
+            RoadlightEntity one = roadlightDao.getOne(1);
             one.setControlmode((String) map.get("ControlMode"));
             roadlightDao.save(one);
             return getWinMap("成功");
@@ -34,10 +39,16 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
         }
     }
 
+    /**
+     * 查询控制模式
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getRoadlightControlMode(HashMap<String, Object> map) {
         try {
-            Sroadlight one = roadlightDao.getOne(1L);
+            RoadlightEntity one = roadlightDao.getOne(1);
             Map winMap = getWinMap("成功");
             winMap.put("ControlMode", one.getControlmode());
             return winMap;
@@ -46,10 +57,16 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
         }
     }
 
+    /**
+     * 手动打开关闭制定路灯
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map setRoadlightStatus(HashMap<String, Object> map) {
         try {
-            Sroadlight one = roadlightDao.getOne(((Integer) map.get("RoadLightId")).longValue());
+            RoadlightEntity one = roadlightDao.getOne((Integer) map.get("RoadLightId"));
             one.setStatus((String) map.get("Action"));
             roadlightDao.save(one);
             return getWinMap("成功");
@@ -58,10 +75,16 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
         }
     }
 
+    /**
+     * 查询当前路灯状态
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getRoadlightStatus(HashMap<String, Object> map) {
         try {
-            Sroadlight one = roadlightDao.getOne(((Integer) map.get("RoadLightId")).longValue());
+            RoadlightEntity one = roadlightDao.getOne((Integer) map.get("RoadLightId"));
             Map winMap = getWinMap("成功");
             winMap.put("Status", one.getStatus());
             return winMap;
@@ -70,31 +93,43 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
         }
     }
 
+    /**
+     * 获取路灯光照阈值
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getLightValue(HashMap<String, Object> map) {
         try {
             Map winMap = getWinMap("成功");
-            Sothersingle upper = sothersingleDao.findById("Up").get();
-            Sothersingle lower = sothersingleDao.findById("Down").get();
-            winMap.put("upper",Integer.valueOf(upper.getValue()));
-            winMap.put("lower",Integer.valueOf(lower.getValue()));
+            OthersingleEntity upper = othersingleDao.findById("Up").get();
+            OthersingleEntity lower = othersingleDao.findById("Down").get();
+            winMap.put("upper", Integer.valueOf(upper.getValue()));
+            winMap.put("lower", Integer.valueOf(lower.getValue()));
             return winMap;
         } catch (Exception e) {
             return getErrorMap("失败");
         }
     }
 
+    /**
+     * 设置路灯光照阈值
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map setLightValue(HashMap<String, Object> map) {
         try {
 //            传入参数处理一
-            Sothersingle up = sothersingleDao.findById("Up").get();
+            OthersingleEntity up = othersingleDao.findById("Up").get();
             up.setValue(map.get("upper").toString());
-            sothersingleDao.save(up);
+            othersingleDao.save(up);
 //            传入参数处理二
-            Sothersingle Down = sothersingleDao.findById("Down").get();
+            OthersingleEntity Down = othersingleDao.findById("Down").get();
             Down.setValue(map.get("lower").toString());
-            sothersingleDao.save(Down);
+            othersingleDao.save(Down);
             return getWinMap("成功");
         } catch (Exception e) {
             return getErrorMap("失败");

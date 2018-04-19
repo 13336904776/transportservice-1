@@ -1,13 +1,13 @@
 package com.xinbitiangao.transportservice.service.impl;
 
 import com.xinbitiangao.transportservice.dao.CarinfoDao;
+import com.xinbitiangao.transportservice.dao.CarstatusDao;
 import com.xinbitiangao.transportservice.dao.PeccancyDao;
-import com.xinbitiangao.transportservice.dao.PeccancyTypeDao;
-import com.xinbitiangao.transportservice.dao.ScarinfoDao;
-import com.xinbitiangao.transportservice.entity.Carinfo;
-import com.xinbitiangao.transportservice.entity.Peccancy;
-import com.xinbitiangao.transportservice.entity.Peccancytype;
-import com.xinbitiangao.transportservice.entity.Scarinfo;
+import com.xinbitiangao.transportservice.dao.PeccancytypeDao;
+import com.xinbitiangao.transportservice.entity.CarinfoEntity;
+import com.xinbitiangao.transportservice.entity.CarstatusEntity;
+import com.xinbitiangao.transportservice.entity.PeccancyEntity;
+import com.xinbitiangao.transportservice.entity.PeccancytypeEntity;
 import com.xinbitiangao.transportservice.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,63 +22,87 @@ import java.util.Map;
 public class CarServiceImpl extends BaseServiceImpl implements CarService {
 
     @Autowired
-    private ScarinfoDao scarinfoDao;
+    private CarinfoDao carinfoDao;
     @Autowired
     private PeccancyDao peccancyDao;
     @Autowired
-    private PeccancyTypeDao peccancyTypeDao;
+    private PeccancytypeDao peccancyTypeDao;
     @Autowired
-    private CarinfoDao carinfoDao;
+    private CarstatusDao carstatusDao;
 
+    /**
+     * 设置小车动作
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map setCarMove(HashMap<String, Object> map) {
         try {
-            Long carId = ((Integer) map.get("CarId")).longValue();
-            Scarinfo scarinfo = scarinfoDao.getOne(carId);
-            scarinfo.setCaraction((String) map.get("CarAction"));
-            scarinfoDao.save(scarinfo);
+            Integer carId = (Integer) map.get("CarId");
+            CarstatusEntity carstatus = carstatusDao.getOne(carId);
+            carstatus.setCaraction((String) map.get("CarAction"));
+            carstatusDao.save(carstatus);
             return getWinMap("成功");
         } catch (Exception e) {
             return getErrorMap("失败");
         }
     }
 
+    /**
+     * 获取小车动作
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getCarMove(HashMap<String, Object> map) {
         try {
-            Long carId = ((Integer) map.get("CarId")).longValue();
+            Integer carId = (Integer) map.get("CarId");
             Map winMap = getWinMap("成功");
-            winMap.put("CarAction", scarinfoDao.findById(carId).get().getCaraction());
+            winMap.put("CarAction", carstatusDao.findById(carId).get().getCaraction());
             return winMap;
         } catch (Exception e) {
             return getErrorMap("失败");
         }
     }
 
+    /**
+     * 获取小车余额
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getCarAccountBalance(HashMap<String, Object> map) {
         try {
-            Long carId = ((Integer) map.get("CarId")).longValue();
+            Integer carId = (Integer) map.get("CarId");
             Map winMap = getWinMap("成功");
-            winMap.put("Balance", scarinfoDao.findById(carId).get().getBalance());
+            winMap.put("Balance", carstatusDao.findById(carId).get().getBalance());
             return winMap;
         } catch (Exception e) {
             return getErrorMap("失败");
         }
     }
 
+    /**
+     * 小车账户充值
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map setCarAccountBalance(HashMap<String, Object> map) {
         try {
-//            取小车id值
-            Long carId = ((Integer) map.get("CarId")).longValue();
-//            取需要充值金额
-            long money = ((Integer) map.get("Money")).longValue();
-//            取小车对象
-            Scarinfo scarinfo = scarinfoDao.findById(carId).get();
-//            修改并存入小车对象
-            scarinfo.addbalance(money);
-            scarinfoDao.save(scarinfo);
+            //            取小车id值
+            Integer carId = (Integer) map.get("CarId");
+            //            取需要充值金额
+            Integer money = (Integer) map.get("Money");
+            //            取小车对象
+            CarstatusEntity carstatus = carstatusDao.findById(carId).get();
+            //            修改并存入小车对象
+            carstatus.addbalance(money);
+            carstatusDao.save(carstatus);
             return getWinMap("成功");
         } catch (Exception e) {
             return getErrorMap("失败");
@@ -86,16 +110,22 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
 
     }
 
+    /**
+     * 获取车辆违章记录
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getCarPeccancy(HashMap<String, Object> map) {
         try {
-//            准备数据
+            //            准备数据
             String carnumber = (String) map.get("carnumber");
-//           清空字符串所带空格
+            //           清空字符串所带空格
             carnumber = carnumber.replace(" ", "");
-//            根据车牌获取违章记录
-            List<Peccancy> carnumbers = peccancyDao.findByCarnumberEquals(carnumber);
-//           返回消息
+            //            根据车牌获取违章记录
+            List<PeccancyEntity> carnumbers = peccancyDao.findByCarnumberEquals(carnumber);
+            //           返回消息
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", carnumbers);
             return winMap;
@@ -104,12 +134,18 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
         }
     }
 
+    /**
+     * 查询所有车辆违章记录
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getAllCarPeccancy(HashMap<String, Object> map) {
         try {
-//           获取所有车辆违章信息
-            List<Peccancy> carnumbers = peccancyDao.findAll();
-//           返回消息
+            //           获取所有车辆违章信息
+            List<PeccancyEntity> carnumbers = peccancyDao.findAll();
+            //           返回消息
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", carnumbers);
             return winMap;
@@ -118,11 +154,17 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
         }
     }
 
+    /**
+     * 获取所有车辆信息
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getCarInfo(HashMap<String, Object> map) {
         try {
-//          执行查询
-            List<Carinfo> all = carinfoDao.findAll();
+            //          执行查询
+            List<CarinfoEntity> all = carinfoDao.findAll();
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", all);
             return winMap;
@@ -131,11 +173,17 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
         }
     }
 
+    /**
+     * 违章代码
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getPeccancyType(HashMap<String, Object> map) {
         try {
-//          执行查询
-            List<Peccancytype> all = peccancyTypeDao.findAll();
+            //          执行查询
+            List<PeccancytypeEntity> all = peccancyTypeDao.findAll();
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", all);
             return winMap;

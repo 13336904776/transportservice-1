@@ -1,8 +1,8 @@
 package com.xinbitiangao.transportservice.service.impl;
 
 
-import com.xinbitiangao.transportservice.dao.StralightDao;
-import com.xinbitiangao.transportservice.entity.Stralight;
+import com.xinbitiangao.transportservice.dao.TralightDao;
+import com.xinbitiangao.transportservice.entity.TralightEntity;
 import com.xinbitiangao.transportservice.service.StralightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,42 +15,53 @@ import java.util.Map;
 @Transactional
 public class StralightServiceImpl extends BaseServiceImpl implements StralightService {
     @Autowired
-    private StralightDao stralightDao;
+    private TralightDao tralightDao;
 
+    /**
+     * 设置红绿灯配置信息
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map setTrafficlightConfig(HashMap<String, Object> map) {
         try {
 
             //        获取对应id的红绿灯编号
-            Stralight stralight = stralightDao.findById(((Integer) map.get("TrafficLightId")).longValue()).get();
+            TralightEntity tralight = tralightDao.findById((Integer) map.get("TrafficLightId")).get();
             //        获取数据封装到红绿灯实体类
-            stralight.setRedtime(((Integer) map.get("RedTime")).longValue());
-            stralight.setGreentime(((Integer) map.get("GreenTime")).longValue());
-            stralight.setYellowtime(((Integer) map.get("YellowTime")).longValue());
+            tralight.setRedtime((Integer) map.get("RedTime"));
+            tralight.setGreentime((Integer) map.get("GreenTime"));
+            tralight.setYellowtime((Integer) map.get("YellowTime"));
             //        存储
-            stralightDao.save(stralight);
+            tralightDao.save(tralight);
             return getWinMap("成功");
         } catch (Exception e) {
             return getErrorMap("失败");
         }
     }
 
+    /**
+     * 获取红绿灯配置信息
+     *
+     * @param map
+     * @return
+     */
     @Override
     public Map getTrafficlightConfig(HashMap<String, Object> map) {
         try {
             //        获取对应id的红绿灯编号
-            Stralight stralight = stralightDao.findById(((Integer) map.get("TrafficLightId")).longValue()).get();
+            TralightEntity tralight = tralightDao.findById((Integer) map.get("TrafficLightId")).get();
             //        存入map集合
             Map winMap = getWinMap("成功");
-            winMap.put("RedTime", stralight.getRedtime());
-            winMap.put("GreenTime", stralight.getGreentime());
-            winMap.put("YellowTime", stralight.getYellowtime());
+            winMap.put("RedTime", tralight.getRedtime());
+            winMap.put("GreenTime", tralight.getGreentime());
+            winMap.put("YellowTime", tralight.getYellowtime());
             return winMap;
         } catch (Exception e) {
             return getErrorMap("失败,注意TrafficLightId 是否正确，TrafficLightId必须是int值不能为字符串");
         }
     }
-
 
 
 }

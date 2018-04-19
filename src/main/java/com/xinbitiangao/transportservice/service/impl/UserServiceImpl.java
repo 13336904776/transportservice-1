@@ -1,7 +1,7 @@
 package com.xinbitiangao.transportservice.service.impl;
 
-import com.xinbitiangao.transportservice.dao.SuserDao;
-import com.xinbitiangao.transportservice.entity.Suser;
+import com.xinbitiangao.transportservice.dao.UserDao;
+import com.xinbitiangao.transportservice.entity.UserEntity;
 import com.xinbitiangao.transportservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +17,14 @@ import java.util.Map;
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
     @Autowired
-    private SuserDao suserDao;
+    private UserDao userDao;
+
 
     @Override
     public Map userLogin(HashMap<String, Object> map) {
         try {
             //        获取传入用户帐号
-            Suser user = suserDao.getOne((String) map.get("UserName"));
+            UserEntity user = userDao.getOne((String) map.get("UserName"));
             //        比对密码
             if (!user.getPassword().equals(map.get("UserPwd"))) {
                 throw new Exception();
@@ -40,8 +41,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
     @Override
     public Map getAllUserInfo(HashMap<String, Object> map) {
         try {
-//            获取所有用户信息
-            List<Suser> all = suserDao.findAll();
+            //            获取所有用户信息
+            List<UserEntity> all = userDao.findAll();
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", all);
             return winMap;
