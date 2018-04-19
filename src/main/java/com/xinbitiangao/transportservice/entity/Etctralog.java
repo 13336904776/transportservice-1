@@ -1,11 +1,12 @@
 package com.xinbitiangao.transportservice.entity;
-
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class EtctralogEntity {
+public class Etctralog {
     @Id
+    @GeneratedValue
     private int etlid;
     private Integer carid;
     private String intime;
@@ -53,21 +54,5 @@ public class EtctralogEntity {
         this.money = money;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        EtctralogEntity that = (EtctralogEntity) o;
-        return etlid == that.etlid &&
-                Objects.equals(carid, that.carid) &&
-                Objects.equals(intime, that.intime) &&
-                Objects.equals(outtime, that.outtime) &&
-                Objects.equals(money, that.money);
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(etlid, carid, intime, outtime, money);
-    }
 }

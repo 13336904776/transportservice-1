@@ -1,12 +1,13 @@
 package com.xinbitiangao.transportservice.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class PeccancyEntity {
-
+public class Peccancy {
     @Id
+    @GeneratedValue
     private int id;
     private String carnumber;
     private String pcode;
@@ -53,21 +54,4 @@ public class PeccancyEntity {
         this.paddr = paddr;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PeccancyEntity that = (PeccancyEntity) o;
-        return id == that.id &&
-                Objects.equals(carnumber, that.carnumber) &&
-                Objects.equals(pcode, that.pcode) &&
-                Objects.equals(pdatetime, that.pdatetime) &&
-                Objects.equals(paddr, that.paddr);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, carnumber, pcode, pdatetime, paddr);
-    }
 }

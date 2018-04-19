@@ -1,11 +1,13 @@
 package com.xinbitiangao.transportservice.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class TralightEntity {
+public class Tralight {
     @Id
+    @GeneratedValue
     private int trafficlightid;
     private String status;
     private Integer redtime;
@@ -62,22 +64,4 @@ public class TralightEntity {
         this.time = time;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TralightEntity that = (TralightEntity) o;
-        return trafficlightid == that.trafficlightid &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(redtime, that.redtime) &&
-                Objects.equals(greentime, that.greentime) &&
-                Objects.equals(yellowtime, that.yellowtime) &&
-                Objects.equals(time, that.time);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(trafficlightid, status, redtime, greentime, yellowtime, time);
-    }
 }

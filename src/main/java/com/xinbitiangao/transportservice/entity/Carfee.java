@@ -1,15 +1,25 @@
 package com.xinbitiangao.transportservice.entity;
-
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class CarfeeEntity {
+public class Carfee {
 
     @Id
+    @GeneratedValue
     private int cfid;
     private String feetime;
     private Integer money;
+    private Integer carid;
+
+    public Integer getCarid() {
+        return carid;
+    }
+
+    public void setCarid(Integer carid) {
+        this.carid = carid;
+    }
 
     public int getCfid() {
         return cfid;
@@ -36,19 +46,4 @@ public class CarfeeEntity {
         this.money = money;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CarfeeEntity that = (CarfeeEntity) o;
-        return cfid == that.cfid &&
-                Objects.equals(feetime, that.feetime) &&
-                Objects.equals(money, that.money);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(cfid, feetime, money);
-    }
 }

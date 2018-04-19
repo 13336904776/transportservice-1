@@ -1,16 +1,16 @@
 package com.xinbitiangao.transportservice.entity;
 
-import javax.persistence.*;
-import java.sql.Date;
-import java.util.Objects;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 @Entity
-public class CarinfoEntity {
+public class Carinfo {
     @Id
+    @GeneratedValue
     private String carnumber;
     private Integer number;
     private String pcardid;
-    private Date buydate;
+    private String buydate;
     private String carbrand;
     private String cardbrand;
 
@@ -40,11 +40,11 @@ public class CarinfoEntity {
         this.pcardid = pcardid;
     }
 
-    public Date getBuydate() {
+    public String getBuydate() {
         return buydate;
     }
 
-    public void setBuydate(Date buydate) {
+    public void setBuydate(String buydate) {
         this.buydate = buydate;
     }
 
@@ -64,22 +64,5 @@ public class CarinfoEntity {
         this.cardbrand = cardbrand;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CarinfoEntity that = (CarinfoEntity) o;
-        return Objects.equals(carnumber, that.carnumber) &&
-                Objects.equals(number, that.number) &&
-                Objects.equals(pcardid, that.pcardid) &&
-                Objects.equals(buydate, that.buydate) &&
-                Objects.equals(carbrand, that.carbrand) &&
-                Objects.equals(cardbrand, that.cardbrand);
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(carnumber, number, pcardid, buydate, carbrand, cardbrand);
-    }
 }

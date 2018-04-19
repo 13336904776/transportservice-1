@@ -1,11 +1,13 @@
 package com.xinbitiangao.transportservice.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class UserEntity {
+public class User {
     @Id
+    @GeneratedValue
     private String username;
     private String password;
     private String pname;
@@ -86,27 +88,5 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return Objects.equals(username, that.username) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(pname, that.pname) &&
-                Objects.equals(pcardid, that.pcardid) &&
-                Objects.equals(psex, that.psex) &&
-                Objects.equals(ptel, that.ptel) &&
-                Objects.equals(pregisterdate, that.pregisterdate) &&
-                Objects.equals(role, that.role) &&
-                Objects.equals(email, that.email);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(username, password, pname, pcardid, psex, ptel, pregisterdate, role, email);
     }
 }

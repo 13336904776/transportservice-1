@@ -1,11 +1,13 @@
 package com.xinbitiangao.transportservice.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class RoadlightEntity {
+public class Roadlight {
     @Id
+    @GeneratedValue
     private int roadlightid;
     private String status;
     private String controlmode;
@@ -35,19 +37,5 @@ public class RoadlightEntity {
         this.controlmode = controlmode;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoadlightEntity that = (RoadlightEntity) o;
-        return roadlightid == that.roadlightid &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(controlmode, that.controlmode);
-    }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(roadlightid, status, controlmode);
-    }
 }

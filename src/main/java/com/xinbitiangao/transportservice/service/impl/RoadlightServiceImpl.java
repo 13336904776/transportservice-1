@@ -3,8 +3,8 @@ package com.xinbitiangao.transportservice.service.impl;
 
 import com.xinbitiangao.transportservice.dao.OthersingleDao;
 import com.xinbitiangao.transportservice.dao.RoadlightDao;
-import com.xinbitiangao.transportservice.entity.OthersingleEntity;
-import com.xinbitiangao.transportservice.entity.RoadlightEntity;
+import com.xinbitiangao.transportservice.entity.Othersingle;
+import com.xinbitiangao.transportservice.entity.Roadlight;
 import com.xinbitiangao.transportservice.service.RoadlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     @Override
     public Map setRoadlightControlMode(HashMap<String, Object> map) {
         try {
-            RoadlightEntity one = roadlightDao.getOne(1);
+            Roadlight one = roadlightDao.getOne(1);
             one.setControlmode((String) map.get("ControlMode"));
             roadlightDao.save(one);
             return getWinMap("成功");
@@ -48,7 +48,7 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     @Override
     public Map getRoadlightControlMode(HashMap<String, Object> map) {
         try {
-            RoadlightEntity one = roadlightDao.getOne(1);
+            Roadlight one = roadlightDao.getOne(1);
             Map winMap = getWinMap("成功");
             winMap.put("ControlMode", one.getControlmode());
             return winMap;
@@ -66,7 +66,7 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     @Override
     public Map setRoadlightStatus(HashMap<String, Object> map) {
         try {
-            RoadlightEntity one = roadlightDao.getOne((Integer) map.get("RoadLightId"));
+            Roadlight one = roadlightDao.getOne((Integer) map.get("RoadLightId"));
             one.setStatus((String) map.get("Action"));
             roadlightDao.save(one);
             return getWinMap("成功");
@@ -84,7 +84,7 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     @Override
     public Map getRoadlightStatus(HashMap<String, Object> map) {
         try {
-            RoadlightEntity one = roadlightDao.getOne((Integer) map.get("RoadLightId"));
+            Roadlight one = roadlightDao.getOne((Integer) map.get("RoadLightId"));
             Map winMap = getWinMap("成功");
             winMap.put("Status", one.getStatus());
             return winMap;
@@ -103,8 +103,8 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     public Map getLightValue(HashMap<String, Object> map) {
         try {
             Map winMap = getWinMap("成功");
-            OthersingleEntity upper = othersingleDao.findById("Up").get();
-            OthersingleEntity lower = othersingleDao.findById("Down").get();
+            Othersingle upper = othersingleDao.findById("Up").get();
+            Othersingle lower = othersingleDao.findById("Down").get();
             winMap.put("upper", Integer.valueOf(upper.getValue()));
             winMap.put("lower", Integer.valueOf(lower.getValue()));
             return winMap;
@@ -123,11 +123,11 @@ public class RoadlightServiceImpl extends BaseServiceImpl implements RoadlightSe
     public Map setLightValue(HashMap<String, Object> map) {
         try {
 //            传入参数处理一
-            OthersingleEntity up = othersingleDao.findById("Up").get();
+            Othersingle up = othersingleDao.findById("Up").get();
             up.setValue(map.get("upper").toString());
             othersingleDao.save(up);
 //            传入参数处理二
-            OthersingleEntity Down = othersingleDao.findById("Down").get();
+            Othersingle Down = othersingleDao.findById("Down").get();
             Down.setValue(map.get("lower").toString());
             othersingleDao.save(Down);
             return getWinMap("成功");

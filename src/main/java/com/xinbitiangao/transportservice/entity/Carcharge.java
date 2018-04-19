@@ -1,11 +1,14 @@
 package com.xinbitiangao.transportservice.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-public class CarchargeEntity {
+public class Carcharge{
     @Id
+    @GeneratedValue
     private int ccid;
     private Integer money;
     private String chargetime;
@@ -35,19 +38,4 @@ public class CarchargeEntity {
         this.chargetime = chargetime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CarchargeEntity that = (CarchargeEntity) o;
-        return ccid == that.ccid &&
-                Objects.equals(money, that.money) &&
-                Objects.equals(chargetime, that.chargetime);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(ccid, money, chargetime);
-    }
 }

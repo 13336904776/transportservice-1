@@ -36,5 +36,35 @@ public class EtcController {
         return etcService.getCarAccountRecord(map);
     }
 
+    @RequestMapping("/get_car_account_fee")
+    public Map getCarAccountFee(@RequestBody HashMap<String, Object> map) {
+        return etcService.getCarAccountFee(map);
+    }
 
+
+    @RequestMapping("/set_car_account_fee")
+    public Map setCarAccountFee(@RequestBody HashMap<String, Object> map) {
+        return etcService.setCarAccountFee(map);
+    }
+
+
+
+    @RequestMapping("/get_etc_traffic_log")
+    public Map getEtcTrafficLog(@RequestBody HashMap<String, Object> map) {
+        return etcService.getEtcTrafficLog(map);
+    }
+
+
+
+
+    @RequestMapping("/get_etc_blacklist")
+    public Map getEtcBlacklist(@RequestBody HashMap<String, Object> map) {
+        return etcService.getEtcBlacklist(map);
+    }
+
+
+    @RequestMapping("/set_etc_blacklist")
+    public Map setEtcBlacklist(@RequestBody HashMap<String, Object> map) {
+        return etcService.setEtcBlacklist(map);
+    }
 }

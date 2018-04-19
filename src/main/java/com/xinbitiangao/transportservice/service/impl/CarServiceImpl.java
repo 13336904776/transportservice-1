@@ -4,10 +4,10 @@ import com.xinbitiangao.transportservice.dao.CarinfoDao;
 import com.xinbitiangao.transportservice.dao.CarstatusDao;
 import com.xinbitiangao.transportservice.dao.PeccancyDao;
 import com.xinbitiangao.transportservice.dao.PeccancytypeDao;
-import com.xinbitiangao.transportservice.entity.CarinfoEntity;
-import com.xinbitiangao.transportservice.entity.CarstatusEntity;
-import com.xinbitiangao.transportservice.entity.PeccancyEntity;
-import com.xinbitiangao.transportservice.entity.PeccancytypeEntity;
+import com.xinbitiangao.transportservice.entity.Carinfo;
+import com.xinbitiangao.transportservice.entity.Carstatus;
+import com.xinbitiangao.transportservice.entity.Peccancy;
+import com.xinbitiangao.transportservice.entity.Peccancytype;
 import com.xinbitiangao.transportservice.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,7 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
     public Map setCarMove(HashMap<String, Object> map) {
         try {
             Integer carId = (Integer) map.get("CarId");
-            CarstatusEntity carstatus = carstatusDao.getOne(carId);
+            Carstatus carstatus = carstatusDao.getOne(carId);
             carstatus.setCaraction((String) map.get("CarAction"));
             carstatusDao.save(carstatus);
             return getWinMap("成功");
@@ -99,7 +99,7 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
             //            取需要充值金额
             Integer money = (Integer) map.get("Money");
             //            取小车对象
-            CarstatusEntity carstatus = carstatusDao.findById(carId).get();
+            Carstatus carstatus = carstatusDao.findById(carId).get();
             //            修改并存入小车对象
             carstatus.addbalance(money);
             carstatusDao.save(carstatus);
@@ -124,7 +124,7 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
             //           清空字符串所带空格
             carnumber = carnumber.replace(" ", "");
             //            根据车牌获取违章记录
-            List<PeccancyEntity> carnumbers = peccancyDao.findByCarnumberEquals(carnumber);
+            List<Peccancy> carnumbers = peccancyDao.findByCarnumberEquals(carnumber);
             //           返回消息
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", carnumbers);
@@ -144,7 +144,7 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
     public Map getAllCarPeccancy(HashMap<String, Object> map) {
         try {
             //           获取所有车辆违章信息
-            List<PeccancyEntity> carnumbers = peccancyDao.findAll();
+            List<Peccancy> carnumbers = peccancyDao.findAll();
             //           返回消息
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", carnumbers);
@@ -164,7 +164,7 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
     public Map getCarInfo(HashMap<String, Object> map) {
         try {
             //          执行查询
-            List<CarinfoEntity> all = carinfoDao.findAll();
+            List<Carinfo> all = carinfoDao.findAll();
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", all);
             return winMap;
@@ -183,7 +183,7 @@ public class CarServiceImpl extends BaseServiceImpl implements CarService {
     public Map getPeccancyType(HashMap<String, Object> map) {
         try {
             //          执行查询
-            List<PeccancytypeEntity> all = peccancyTypeDao.findAll();
+            List<Peccancytype> all = peccancyTypeDao.findAll();
             Map winMap = getWinMap("成功");
             winMap.put("ROWS_DETAIL", all);
             return winMap;

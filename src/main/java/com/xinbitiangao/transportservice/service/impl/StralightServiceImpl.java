@@ -2,7 +2,7 @@ package com.xinbitiangao.transportservice.service.impl;
 
 
 import com.xinbitiangao.transportservice.dao.TralightDao;
-import com.xinbitiangao.transportservice.entity.TralightEntity;
+import com.xinbitiangao.transportservice.entity.Tralight;
 import com.xinbitiangao.transportservice.service.StralightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class StralightServiceImpl extends BaseServiceImpl implements StralightSe
         try {
 
             //        获取对应id的红绿灯编号
-            TralightEntity tralight = tralightDao.findById((Integer) map.get("TrafficLightId")).get();
+            Tralight tralight = tralightDao.findById((Integer) map.get("TrafficLightId")).get();
             //        获取数据封装到红绿灯实体类
             tralight.setRedtime((Integer) map.get("RedTime"));
             tralight.setGreentime((Integer) map.get("GreenTime"));
@@ -51,7 +51,7 @@ public class StralightServiceImpl extends BaseServiceImpl implements StralightSe
     public Map getTrafficlightConfig(HashMap<String, Object> map) {
         try {
             //        获取对应id的红绿灯编号
-            TralightEntity tralight = tralightDao.findById((Integer) map.get("TrafficLightId")).get();
+            Tralight tralight = tralightDao.findById((Integer) map.get("TrafficLightId")).get();
             //        存入map集合
             Map winMap = getWinMap("成功");
             winMap.put("RedTime", tralight.getRedtime());
