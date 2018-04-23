@@ -31,13 +31,6 @@ public class WebAspect {
         //  请求参数
         System.out.println("--------------请求数据--------------");
         System.out.println(JSONObject.fromObject(joinPoint.getArgs()[0]).toString());
-    }
-
-    @AfterReturning(returning = "ret", pointcut = "webLog()")
-    public void doAfterReturning(Object ret) throws Throwable {
-        // 处理完请求，返回内容
-        System.out.println("--------------返回数据--------------");
-        System.out.println(JSONObject.fromObject(ret));
         System.out.println();
         System.out.println();
     }

@@ -13,14 +13,6 @@ public class Carfee {
     private Integer money;
     private Integer carid;
 
-    public Integer getCarid() {
-        return carid;
-    }
-
-    public void setCarid(Integer carid) {
-        this.carid = carid;
-    }
-
     public int getCfid() {
         return cfid;
     }
@@ -37,7 +29,6 @@ public class Carfee {
         this.feetime = feetime;
     }
 
-
     public Integer getMoney() {
         return money;
     }
@@ -46,4 +37,11 @@ public class Carfee {
         this.money = money;
     }
 
+    public Integer getCarid() {
+        return carid;
+    }
+
+    public void setCarid(Integer carid) {
+        this.carid = carid;
+    }
 }

@@ -43,7 +43,8 @@ public class EtcServiceImpl extends BaseServiceImpl implements EtcService {
     public Map setEtcRate(HashMap<String, Object> map) {
         try {
             Othersingle feeRate = othersingleDao.findById("FeeRate").get();
-            feeRate.setValue((String) map.get("Money"));
+            feeRate.setValue((Integer) map.get("Money") + "");
+            othersingleDao.save(feeRate);
             return getWinMap("成功");
         } catch (Exception e) {
             return getErrorMap("失败");
@@ -172,7 +173,7 @@ public class EtcServiceImpl extends BaseServiceImpl implements EtcService {
 
             return getWinMap("成功");
         } catch (Exception e) {
-            return getErrorMap("失败");
+            return getErrorMap("失败,请参考参数{'UserName':'user1','carid':3}");
         }
     }
 }
