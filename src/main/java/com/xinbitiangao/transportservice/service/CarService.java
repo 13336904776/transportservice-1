@@ -36,7 +36,7 @@ public interface CarService {
     Map setCarAccountBalance(HashMap<String, Object> map);
 
     /**
-     * 车讯车辆违章记录
+     * 车辆违章记录
      * @param map
      * @return
      */

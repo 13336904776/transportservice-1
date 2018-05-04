@@ -11,37 +11,67 @@ import java.util.Map;
  * 车辆相关Controller
  */
 @RestController
-@RequestMapping(value = "/api/v2", method = RequestMethod.POST)
+@RequestMapping(path = "/car", method = RequestMethod.POST)
 public class CarController {
     @Autowired
     private CarService carService;
 
 
-    @RequestMapping("/set_car_move")
+    /**
+     * 设置小车动作
+     * @param map
+     * @return
+     */
+    @RequestMapping("/setcarmove")
     public Map setCarMove(@RequestBody HashMap<String, Object> map) {
         return carService.setCarMove(map);
     }
 
+    /**
+     * 获取小车动作
+     * @param map
+     * @return
+     */
     @RequestMapping("/get_car_move")
     public Map getCarMove(@RequestBody HashMap<String, Object> map) {
         return carService.getCarMove(map);
     }
-
+    /**
+     * 获取小车余额
+     * @param map
+     * @return
+     */
     @RequestMapping("/get_car_account_balance")
     public Map getCarAccountBalance(@RequestBody HashMap<String, Object> map) {
         return carService.getCarAccountBalance(map);
     }
 
+    /**
+     * 小车账户充值
+     * @param map
+     * @return
+     */
     @RequestMapping("/set_car_account_recharge")
     public Map setCarAccountBalance(@RequestBody HashMap<String, Object> map) {
         return carService.setCarAccountBalance(map);
     }
 
+
+    /**
+     * 车辆违章记录
+     * @param map
+     * @return
+     */
     @RequestMapping("/get_car_peccancy")
     public Map getCarPeccancy(@RequestBody HashMap<String, Object> map) {
         return carService.getCarPeccancy(map);
     }
 
+    /**
+     * 查询所有车辆违章记录
+     * @param map
+     * @return
+     */
     @RequestMapping("/get_all_car_peccancy")
     public Map getAllCarPeccancy(@RequestBody HashMap<String, Object> map) {
         return carService.getAllCarPeccancy(map);
