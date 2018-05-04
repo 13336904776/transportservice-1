@@ -1,11 +1,14 @@
 package com.xinbitiangao.transportservice.entity;
 
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Data
 public class Carcharge{
     @Id
     @GeneratedValue
@@ -13,29 +16,5 @@ public class Carcharge{
     private Integer money;
     private String chargetime;
 
-
-    public int getCcid() {
-        return ccid;
-    }
-
-    public void setCcid(int ccid) {
-        this.ccid = ccid;
-    }
-
-    public Integer getMoney() {
-        return money;
-    }
-
-    public void setMoney(Integer money) {
-        this.money = money;
-    }
-
-    public String getChargetime() {
-        return chargetime;
-    }
-
-    public void setChargetime(String chargetime) {
-        this.chargetime = chargetime;
-    }
 
 }

@@ -167,7 +167,7 @@ public class EtcServiceImpl extends BaseServiceImpl implements EtcService {
             Carblacklist carblacklist = new Carblacklist();
             carblacklist.setCarid(carid);
             carblacklist.setUsername(username);
-            carblacklist.setCarDateTime(nowDate);
+            carblacklist.setCardatetime(nowDate);
 
             carblacklistDao.save(carblacklist);
 
