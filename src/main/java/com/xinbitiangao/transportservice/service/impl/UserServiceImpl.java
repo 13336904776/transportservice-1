@@ -34,7 +34,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
             winMap.put("UserRole", user.getRole());
             return winMap;
         } catch (Exception e) {
-            return getErrorMap("失败");
+            return getErrorMap("登陆失败，密码错误");
         }
     }
 
@@ -48,6 +48,19 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
             return winMap;
         } catch (Exception e) {
             return getErrorMap("失败");
+        }
+    }
+
+    @Override
+    public Map userRegister(User user) {
+        try {
+            if (userDao.findById(user.getUsername()).isPresent()){
+                throw new Exception();
+            }
+            userDao.save(user);
+            return getWinMap("注册成功");
+        } catch (Exception e) {
+            return getErrorMap("用户名重复请重试");
         }
     }
 }

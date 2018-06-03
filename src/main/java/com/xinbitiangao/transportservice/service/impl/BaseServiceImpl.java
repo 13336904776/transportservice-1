@@ -19,6 +19,7 @@ public class BaseServiceImpl{
         map.put("ERRMSG", message);
         map.put("作者", "黄大胖子");
         map.put("GitHub", "GarfieldHuang");
+        map.put("作者qq群","606799489");
         return map;
     }
 

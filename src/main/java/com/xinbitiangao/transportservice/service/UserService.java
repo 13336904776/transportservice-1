@@ -1,5 +1,7 @@
 package com.xinbitiangao.transportservice.service;
 
+import com.xinbitiangao.transportservice.entity.User;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,4 +25,11 @@ public interface UserService {
      * @return
      */
     Map getAllUserInfo(HashMap<String, Object> map);
+
+    /**
+     * 注册用户
+     * @param user
+     * @return
+     */
+    Map userRegister(User user);
 }

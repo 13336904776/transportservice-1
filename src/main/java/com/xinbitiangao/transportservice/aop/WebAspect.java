@@ -34,7 +34,7 @@ public class WebAspect {
         log.info("IP  : " + request.getRemoteAddr());
         //  请求参数
         log.info("--------------请求数据--------------");
-        log.info(JSONObject.fromObject(joinPoint.getArgs()[0]).toString());
+        log.info(joinPoint.getArgs()[0].toString());
     }
 
     //后置异常通知
